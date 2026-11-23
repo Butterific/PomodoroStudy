@@ -14,6 +14,14 @@ document.querySelector('#resetbutton').addEventListener('click', () => {
     '#FFB7B2'
   ], 1500);
 });
+document.querySelector('#pausebutton').addEventListener('click', () => {
+  changeShaderColors([
+    '#e50909',
+    '#c43d14',
+    '#f73670',
+    '#FFB7B2'
+  ], 1500);
+});
 
 // shader color change scripts, made with ai
 let currentShaderColors = ['#98F5E1', '#B5B9FF', '#FFF07C', '#FFB7B2'];
