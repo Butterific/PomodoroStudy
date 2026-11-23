@@ -47,3 +47,43 @@ body > canvas {
 button {
     margin: 4px;
 }
+/* normal button styles */
+.normalbtn {
+    color: white;
+    background-color: #4CAF50;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* normal button when hovering styles */
+.normalbtn:hover {
+    color: white;
+    background-color: #4caf4fba;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+/* normal button when clicked styles */
+.normalbtn:active {
+    color: white;
+    background-color: #4caf4f69;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
