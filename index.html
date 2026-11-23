@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
+<!-- config for the shader.js -->
 <body
     fc-fluid-gradient="component"
     fc-fluid-gradient-hover="true"
@@ -25,6 +26,7 @@
     fc-fluid-gradient-color-intensity="0.8"
     fc-fluid-gradient-softness="1.5"
     fc-fluid-gradient-dpr-max="1.5">
+    <!-- main container -->
     <div class="container">
         <h1>PomodoroStudy</h1>
         <p>A simple study timer app that has different sessions allowing you to work with breaks while listening to music.</p>
@@ -33,6 +35,7 @@
         <button id="resetButton">Reset</button>
         <div id="timerDisplay">25:00</div>
     </div>
+    <!-- shader canvas (background) -->
     <script type="module" src="shader.js"></script>
     <script src="index.js"></script>
 </body>
