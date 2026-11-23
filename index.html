@@ -28,16 +28,19 @@
     fc-fluid-gradient-dpr-max="1.5">
     <!-- main container -->
     <div class="container">
-        <h1>PomodoroStudy</h1>
-        <p>A simple study timer app that has different sessions allowing you to work with breaks while listening to music.</p>
-        <p>Click the buttons below to start, pause, and reset the timer.</p>
-        <p>Click the color buttons below to change the background colors.</p>
-        <div class="buttonrow" style="display: flex; gap: 7px; flex-wrap: nowrap;">
-            <button id="startbutton" class="normalbtn">Start</button>
-            <button id="pausebutton" class="normalbtn">Pause</button>
-            <button id="resetbutton" class="normalbtn">Reset</button>
+        <div class="center-box">
+                <h1>PomodoroStudy</h1>
+                <p>A simple study timer app that has different sessions allowing you to work with breaks while listening to music.</p>
+                <p>Click the buttons below to start, pause, and reset the timer.</p>
+                <p>Click the color buttons below to change the background colors.</p>
+            <div class="buttonrow" style="display: flex; gap: 7px; flex-wrap: nowrap;">
+                <button id="startbutton" class="normalbtn">Start</button>
+                <button id="pausebutton" class="normalbtn">Pause</button>
+                <button id="resetbutton" class="normalbtn">Reset</button>
+            </div>
+            <div id="timerdisplay">25:00</div>
         </div>
-        <div id="timerDisplay">25:00</div>
+    </div>
     </div>
     <!-- shader canvas (background) -->
     <script type="module" src="shader.js"></script>
