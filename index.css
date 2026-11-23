@@ -72,6 +72,11 @@ button {
     border-radius: 4px;
     cursor: pointer;
 }
+#timedisplay {
+    font-size: 48px;
+    margin-top: 20px;
+    text-shadow: 0 2px 18px rgba(245, 0, 0, 1);
+}
 /* normal button when hovering styles */
 .normalbtn:hover {
     color: white;
