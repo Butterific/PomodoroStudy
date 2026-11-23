@@ -15,6 +15,10 @@ body {
     background: #07130f;
     color: #f7f7f2;
     font-family: Georgia, "Times New Roman", serif;
+      user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
 }
 
 body > canvas {
