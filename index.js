@@ -1,15 +1,23 @@
-document.querySelector('#startButton').addEventListener('click', () => {
-changeShaderColors([
-  '#140d08',
-  '#b85f35',
-  '#4a2718',
-  '#f2c66d'
-], 1500);
+document.querySelector('#startbutton').addEventListener('click', () => {
+  changeShaderColors([
+    '#19c957',
+    '#298b20',
+    '#366744',
+    '#74df6a'
+  ], 1500);
+});
+document.querySelector('#resetbutton').addEventListener('click', () => {
+  changeShaderColors([
+    '#98F5E1',
+    '#B5B9FF',
+    '#FFF07C',
+    '#FFB7B2'
+  ], 1500);
 });
 
-
-
-// color change scripts, made with ai
+// shader color change scripts, made with ai
+let currentShaderColors = ['#98F5E1', '#B5B9FF', '#FFF07C', '#FFB7B2'];
+let colorAnimationFrame = null;
 
 function colorToRgb(hex) {
   const value = hex.replace('#', '');
@@ -33,24 +41,33 @@ function mixColor(from, to, progress) {
     .join('');
 }
 
-function changeShaderColors(colors, duration = 1000) {
-  const startColors = ['#07130f', '#31584a', '#101d18', '#9ac5a7'];
+function changeShaderColors(targetColors, duration = 1000) {
+  if (!window.__setShaderColors) return;
+
+  if (colorAnimationFrame !== null) {
+    cancelAnimationFrame(colorAnimationFrame);
+  }
+
+  const startColors = [...currentShaderColors];
   const startTime = performance.now();
 
   function animate(now) {
     const progress = Math.min((now - startTime) / duration, 1);
     const eased = progress * progress * (3 - 2 * progress);
 
-    window.__setShaderColors(
-      ...startColors.map((color, index) =>
-        mixColor(color, colors[index], eased)
-      )
+    const interpolatedColors = startColors.map((color, index) =>
+      mixColor(color, targetColors[index], eased)
     );
 
+    window.__setShaderColors(...interpolatedColors);
+
     if (progress < 1) {
-      requestAnimationFrame(animate);
+      colorAnimationFrame = requestAnimationFrame(animate);
+    } else {
+      currentShaderColors = [...targetColors];
+      colorAnimationFrame = null;
     }
   }
 
-  requestAnimationFrame(animate);
+  colorAnimationFrame = requestAnimationFrame(animate);
 }
