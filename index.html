@@ -4,10 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PomodoroStudy</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="index.css">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 </head>
-<body>
+<body
+    fc-fluid-gradient="component"
+    fc-fluid-gradient-hover="true"
+    fc-fluid-gradient-brush-size="18"
+    fc-fluid-gradient-brush-strength="0.7"
+    fc-fluid-gradient-distortion-amount="0.45"
+    fc-fluid-gradient-fluid-decay="0.985"
+    fc-fluid-gradient-trail-length="0.65"
+    fc-fluid-gradient-stop-decay="0.85"
+    fc-fluid-gradient-flow-speed="1"
+    fc-fluid-gradient-idle-speed="0.7"
+    fc-fluid-gradient-color-1="#07130f"
+    fc-fluid-gradient-color-2="#31584a"
+    fc-fluid-gradient-color-3="#101d18"
+    fc-fluid-gradient-color-4="#9ac5a7"
+    fc-fluid-gradient-color-intensity="0.8"
+    fc-fluid-gradient-softness="1.5"
+    fc-fluid-gradient-dpr-max="1.5">
     <div class="container">
         <h1>PomodoroStudy</h1>
         <p>A simple study timer app that has different sessions allowing you to work with breaks while listening to music.</p>
@@ -16,7 +33,7 @@
         <button id="resetButton">Reset</button>
         <div id="timerDisplay">25:00</div>
     </div>
-
+    <script type="module" src="shader.js"></script>
     <script src="index.js"></script>
 </body>
 </html>
