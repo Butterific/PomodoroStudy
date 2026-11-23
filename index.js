@@ -59,6 +59,7 @@ function changeShaderColors(targetColors, duration = 1000) {
       mixColor(color, targetColors[index], eased)
     );
 
+    currentShaderColors = [...interpolatedColors];
     window.__setShaderColors(...interpolatedColors);
 
     if (progress < 1) {
