@@ -4,3 +4,4 @@ A simple study timer app that has different sessions allowing you to work with b
 
 ## Credits
  - shader.js was taken from some of my previous projects.
+ - oneko was taken from https://github.com/adryd325/oneko.js
