@@ -1,6 +1,18 @@
 let randomaudio = Math.floor(Math.random() * (3 - 1 + 1)) + 1;
+const audio = new Audio(`music/${randomaudio}.mp3`);
+
 document.querySelector('#startbutton').addEventListener('click', () => {
-  // Play the selected audio file
-  const audio = new Audio(`music/${randomaudio}.mp3`);
   audio.play();
+  audio.loop = true;
+
 });
+document.querySelector('#pausebutton').addEventListener('click', () => {
+  audio.pause();
+
+});
+document.querySelector('#resetbutton').addEventListener('click', () => {
+  audio.pause();
+  audio.currentTime = 0;
+
+});
+
