@@ -26,14 +26,26 @@ document.addEventListener('DOMContentLoaded', () => {
   text.style.textAlign = "center";
   text.style.padding = "0 20px";
 
+  const skipButton = document.createElement('button');
+  skipButton.type = 'button';
+  skipButton.id = 'headphone-splash-skip';
+  skipButton.textContent = 'Click to skip';
+
   splash.appendChild(text);
+  splash.appendChild(skipButton);
   document.body.appendChild(splash);
 
-  setTimeout(() => {
+  let dismissed = false;
+  const dismissSplash = () => {
+    if (dismissed) return;
+    dismissed = true;
     splash.style.opacity = "0";
-    
+
     setTimeout(() => {
       splash.remove();
     }, 1000);
-  }, 4000);
+  };
+
+  skipButton.addEventListener('click', dismissSplash);
+  setTimeout(dismissSplash, 4000);
 });

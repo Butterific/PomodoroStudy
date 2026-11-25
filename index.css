@@ -29,6 +29,25 @@ body > canvas {
     height: 100%;
     pointer-events: none;
 }
+
+#headphone-splash-skip {
+    position: absolute;
+    right: 24px;
+    bottom: 20px;
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    border-radius: 4px;
+    background: transparent;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+#headphone-splash-skip:hover,
+#headphone-splash-skip:focus-visible {
+    background: rgba(255, 255, 255, 0.15);
+}
+
 /* center box */
 .container {
     position: relative;
