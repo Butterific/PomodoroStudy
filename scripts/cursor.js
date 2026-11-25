@@ -61,42 +61,4 @@ document.addEventListener("DOMContentLoaded", () => {
     history.length = 0; 
   });
 
-  document.addEventListener("mouseenter", () => {
-    cursor.style.opacity = "1";
-  });
-
-  function render() {
-    cursorX += (mouseX - cursorX) * speed;
-    cursorY += (mouseY - cursorY) * speed;
-
-    cursor.style.transform = `translate(${cursorX}px, ${cursorY}px) translate(-50%, -50%)`;
-
-    history.push({ x: cursorX, y: cursorY });
-    if (history.length > maxHistoryLength) {
-      history.shift();
-    }
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    if (history.length > 1) {
-      ctx.beginPath();
-      ctx.moveTo(history[0].x, history[0].y);
-
-      for (let i = 1; i < history.length; i++) {
-        ctx.lineTo(history[i].x, history[i].y);
-      }
-
-      ctx.strokeStyle = "rgba(42, 255, 102, 0.6)"; 
-      ctx.lineWidth = 6; 
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
-      ctx.shadowBlur = 12; 
-      ctx.shadowColor = "#0dff00";
-      ctx.stroke();
-    }
-
-    requestAnimationFrame(render);
-  }
-
-  render();
-});
+  document.addEventListener("mouseenter", () 
