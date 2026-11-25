@@ -102,80 +102,27 @@ const displayShader = `
   uniform float uSoftness;
   uniform float uIdleSpeed;
   varying vec2 vUv;
-
-  mat2 rot(float a) {
-    float c = cos(a), s = sin(a);
-    return mat2(c, -s, s, c);
-  }
-
   void main() {
     vec2 fragCoord = vUv * iResolution;
     vec4 fluid = texture2D(iFluid, vUv);
     vec2 fluidVel = fluid.xy;
-    float fluidRipple = fluid.z;
-
     float mr = min(iResolution.x, iResolution.y);
     vec2 uv = (fragCoord * 2.0 - iResolution.xy) / mr;
     uv += fluidVel * (0.5 * uDistortionAmount);
-
     float t = iTime * uIdleSpeed;
-    float soft = clamp(uSoftness * 0.1, 0.0, 0.85);
-
-    // Elongate and tilt slightly so patterns read as rolling ocean swells
-    vec2 q = rot(-0.22) * uv;
-    q = vec2(q.x * 0.78, q.y * 1.45);
-
-    float swell = 0.0;
-    float caustic = 0.0;
-    float amp = 1.0;
-    float freq = 1.5;
-
-    // Layered directional waves with soft domain warping
-    for (float i = 0.0; i < 6.0; ++i) {
-      float spread = sin(i * 1.7) * 0.45;
-      vec2 dir = vec2(sin(spread), cos(spread));
-      vec2 perp = vec2(-dir.y, dir.x);
-
-      float phase = dot(q, dir) * freq - t * (0.55 + i * 0.12)
-                  + sin(dot(q, perp) * freq * 0.45 + t * 0.25 + i) * 0.85;
-      float w = sin(phase);
-
-      // Curl coordinates gently with each octave for liquid motion
-      q += dir * (w * 0.11 * amp) + perp * (cos(phase) * 0.16 * amp);
-
-      swell += (w * 0.5 + 0.5) * amp;
-
-      // Ridged intersections produce soft caustic webbing
-      float ridge = 1.0 - abs(w);
-      float r2 = ridge * ridge;
-      caustic += (r2 * r2) * amp;
-
-      freq *= 1.42;
-      amp *= 0.62;
+    float d = -t * 0.5;
+    float a = 0.0;
+    for (float i = 0.0; i < 8.0; ++i) {
+      a += cos(i - d - a * uv.x);
+      d += sin(uv.y * i + a);
     }
-
-    swell /= 2.48;
-    caustic /= 2.48;
-
-    // Slow deep-water undercurrent for broad tonal depth
-    float undercurrent = sin(q.x * 0.85 - t * 0.2 + swell * 2.4) * 0.5 + 0.5;
-
-    float mixer1 = mix(smoothstep(0.15, 0.85, swell), 0.5, soft);
-    float mixer2 = mix(smoothstep(0.20, 0.90, undercurrent * 0.65 + swell * 0.35), 0.5, soft);
-
-    // Caustic highlights + subtle wake shimmer when mouse disturbs the surface
-    float wake = clamp(abs(fluidRipple) * 2.5 + length(fluidVel) * 1.2, 0.0, 1.0) * uDistortionAmount;
-    float shimmer = smoothstep(0.22, 0.72, caustic) * (1.0 - soft * 0.6) + wake * 0.4;
-    shimmer = clamp(shimmer, 0.0, 1.0);
-
-    // Color mapping: deep abyss -> mid swell -> pelagic shadow -> caustic crest
+    d += t * 0.5;
+    float mixer1 = mix(cos(uv.x * d) * 0.5 + 0.5, 0.5, clamp(uSoftness * 0.1, 0.0, 0.9));
+    float mixer2 = mix(cos(uv.y * a) * 0.5 + 0.5, 0.5, clamp(uSoftness * 0.1, 0.0, 0.9));
+    float mixer3 = mix(sin(d + a) * 0.5 + 0.5, 0.5, clamp(uSoftness * 0.1, 0.0, 0.9));
     vec3 col = mix(uColor1, uColor2, mixer1);
-    col = mix(col, uColor3, mixer2 * 0.75);
-    col = mix(col, uColor4, shimmer * 0.48);
-
-    // Subtle specular sheen along brightest wave peaks
-    col += uColor4 * (shimmer * shimmer * shimmer) * 0.24;
-
+    col = mix(col, uColor3, mixer2);
+    col = mix(col, uColor4, mixer3 * 0.4);
     gl_FragColor = vec4(col * uColorIntensity, 1.0);
   }
 `;
@@ -196,10 +143,10 @@ const config = {
   fluidDecay: asNumber(attr('fc-fluid-gradient-fluid-decay'), 0.98),
   trailLength: asNumber(attr('fc-fluid-gradient-trail-length'), 0.5),
   stopDecay: asNumber(attr('fc-fluid-gradient-stop-decay'), 0.85),
-  color1: attr('fc-fluid-gradient-color-1') || '#010814',
-  color2: attr('fc-fluid-gradient-color-2') || '#0b4f6c',
-  color3: attr('fc-fluid-gradient-color-3') || '#021b2b',
-  color4: attr('fc-fluid-gradient-color-4') || '#7de2e6',
+  color1: attr('fc-fluid-gradient-color-1') || '#000000',
+  color2: attr('fc-fluid-gradient-color-2') || '#ba8e23',
+  color3: attr('fc-fluid-gradient-color-3') || '#000000',
+  color4: attr('fc-fluid-gradient-color-4') || '#94fa92',
   colorIntensity: asNumber(attr('fc-fluid-gradient-color-intensity'), 0.5),
   softness: asNumber(attr('fc-fluid-gradient-softness'), 1.0),
   dprMax: asNumber(attr('fc-fluid-gradient-dpr-max'), 1.0),
