@@ -107,4 +107,23 @@ button {
     border-radius: 4px;
     cursor: pointer;
 }
+#subminutebutton {
+    background-color: #f44336;
+}
+#subminutebutton:hover {
+    background-color: #f44336b1;
+}
+#subminutebutton:active {
+    background-color: #f4433656;
+}
+
+#addminutebutton {
+    background-color: #00e5ffda;
+}
+#addminutebutton:hover {
+    background-color: #00e5ffa2;
+}
+#addminutebutton:active {
+    background-color: #00e5ff35;
+}
 
