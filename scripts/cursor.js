@@ -51,14 +51,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const history = [];
   const maxHistoryLength = 15;
-  window.addEventListener("mousemove", (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-  });
-
-  document.addEventListener("mouseleave", () => {
-    cursor.style.opacity = "0";
-    history.length = 0; 
-  });
-
-  document.addEventListener("mouseenter", () 
+  window.addEventLis
