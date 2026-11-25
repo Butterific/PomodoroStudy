@@ -30,18 +30,26 @@
     <div class="container">
         <div class="center-box">
                 <h1>PomodoroStudy</h1>
-                <p>A simple study timer app that <s>has different sessions!</s></p>
+                <p>A simple study timer app with focus and break sessions.</p>
                 <p>Click the buttons below to start, pause, and reset the timer.</p>
+            <div class="buttonrow session-controls" role="group" aria-label="Choose a timer session">
+                <button class="normalbtn session-button" type="button" data-session="focus" aria-pressed="true">Focus</button>
+                <button class="normalbtn session-button" type="button" data-session="shortBreak" aria-pressed="false">Short Break</button>
+                <button class="normalbtn session-button" type="button" data-session="longBreak" aria-pressed="false">Long Break</button>
+            </div>
+            <div id="session-progress">Focus sessions: 0/4</div>
             <div class="buttonrow">
                 <button id="subminutebutton" class="normalbtn">-1 Minute</button>
                 <button id="startbutton" class="normalbtn">Start</button>
                 <button id="pausebutton" class="normalbtn">Pause</button>
                 <button id="resetbutton" class="normalbtn">Reset</button>
                 <button id="addminutebutton" class="normalbtn">+1 Minute</button>
+                <button id="about" class="normalbtn">About</button>
             </div>
             <br>
             <div id="musicdisplay">No Tracks Playing</div>
             <div id="timedisplay">25:00</div>
+            <div id="session-message" aria-live="polite"></div>
         </div>
         <div class="center-box">
             <h1>Tasks</h1>
