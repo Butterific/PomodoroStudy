@@ -1,0 +1,34 @@
+const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+let sleeptime = 150;
+async function titleLoop() {
+  while (true) {
+    document.title = "P";
+    await sleep(sleeptime);
+    document.title = "Po";
+    await sleep(sleeptime);
+    document.title = "Pom";
+    await sleep(sleeptime);
+    document.title = "Pomo";
+    await sleep(sleeptime);
+    document.title = "Pomod";
+    await sleep(sleeptime);
+    document.title = "Pomodo";
+    await sleep(sleeptime);
+    document.title = "Pomodor";
+    await sleep(sleeptime);
+    document.title = "Pomodoro";
+    await sleep(sleeptime);
+    document.title = "PomodoroS";
+    await sleep(sleeptime);
+    document.title = "PomodoroSt";
+    await sleep(sleeptime);
+    document.title = "PomodoroStu";
+    await sleep(sleeptime);
+    document.title = "PomodoroStud";
+    await sleep(sleeptime);
+    document.title = "PomodoroStudy";
+    await sleep(2000);
+  }
+}
+
+titleLoop();
