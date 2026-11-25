@@ -46,12 +46,14 @@
         <div class="center-box">
             <h1>Tasks</h1>
             <p>Add tasks to your list to finish before the timer ends!</p>
-            <div class="buttonrow">
-                <button id="subminutebutton" class="normalbtn">-1 Minute</button>
-                <button id="startbutton" class="normalbtn">Start</button>
-            </div>
-            <br>
-            <div id="taskdisplay">No Tasks</div>
+            <form id="task-form" class="buttonrow">
+                <label for="task-input">New task</label>
+                <input id="task-input" name="task" type="text" placeholder="Enter a task" required>
+                <button id="add-task-button" class="normalbtn" type="submit">Add task</button>
+            </form>
+            <ul id="task-list">
+                <li id="empty-task-message">No tasks yet</li>
+            </ul>
         </div>
     </div>
     </div>
