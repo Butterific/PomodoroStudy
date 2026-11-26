@@ -11,7 +11,8 @@ body {
 body {
     min-height: 100vh;
     margin: 0;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y: auto;
     background: #07130f;
     color: #f7f7f2;
     font-family: Georgia, "Times New Roman", serif;
@@ -63,6 +64,8 @@ body > canvas {
     text-shadow: 0 2px 18px rgba(245, 0, 0, 1);
 }
 .center-box {
+    width: 100%;
+    min-width: 0;
     background: rgba(0, 0, 0, 0.2);
     padding: 20px;
     text-align: center;
@@ -172,8 +175,11 @@ button {
 #task-list {
     width: 100%;
     max-width: 520px;
+    max-height: min(35vh, 280px);
     margin: 12px auto 0;
     padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
     list-style: none;
 }
 
@@ -189,6 +195,7 @@ button {
     align-items: center;
     gap: 10px;
     flex: 1;
+    min-width: 0;
     padding: 8px 10px;
     border-radius: 4px;
     background: rgba(0, 0, 0, 0.25);
@@ -251,5 +258,13 @@ button {
     border-color: #98F5E1;
     background: rgba(0, 0, 0, 0.5);
     box-shadow: 0 0 0 3px rgba(152, 245, 225, 0.18);
+}
+
+#task-form {
+    flex-wrap: wrap;
+}
+
+#task-form label {
+    flex-basis: 100%;
 }
 
