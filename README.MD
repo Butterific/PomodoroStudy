@@ -4,6 +4,8 @@ A simple study timer app that has different sessions allowing you to work with b
 
 ## Setup
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Butterific/PomodoroStudy)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/Butterific/PomodoroStudy)
+
 
 ## Credits
  - shader.js was taken from some of my previous projects.
