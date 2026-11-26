@@ -3,7 +3,6 @@
 A simple study timer app that has different sessions allowing you to work with breaks while listening to music.
 
 ## Setup
-Simply just deploy it via cloudflare pages
 [![Deploy to Cloudflare](https://deploy.workers.cloudflare.com/button)](https://deploy.workers.cloudflare.com/?url=https://github.com/Butterific/PomodoroStudy)
 
 ## Credits
