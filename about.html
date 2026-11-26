@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<head>
+    <title>PomodoroStudy Info</title>
+    <style>
+        body{
+            background-image: url("info.mp4");
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .about-container {
+            color: white;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 20px;
+            font-family: "times new roman", cursive, sans-serif;
+        }
+        #bg-video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            min-height: 100%;
+            z-index: -1;
+            object-fit: cover;
+        }
+        .normalbtn {
+        color: white;
+        background-color: #4CAF50;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        }       
+    /* normal button when hovering styles */
+    .normalbtn:hover {
+        color: white;
+        background-color: #4caf4fba;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    /* normal button when clicked styles */
+    .normalbtn:active {
+        color: white;
+        background-color: #4caf4f69;
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    </style>
+  </head>
+  <body>
+    <video autoplay muted loop id="bg-video">
+    <source src="assets/about.mp4" type="video/mp4">
+    </video>
+    <div class="about-container">
+    <h1>PomodoroStudy Info</h1>
+    <p>Version: 1.0.0</p>
+    <p>Developer: ButterLabs</p>
+    <p>Website: <a href="https://butterlabs.app/" target="_blank" rel="noopener noreferrer">https://butterlabs.app/</a></p>
+    <h3>Orginaily created for HackClub Embassy 2026</h3>
+    <img style="width: 40%; background-color: black;" src="assets/embassy.webp">
+    <br>
+    <br>
+    <br>
+    <button id="about" class="normalbtn" onclick="window.location.href='index.html'">Return to Home</button>
+    </div>
+  </body>
