@@ -4,6 +4,16 @@ const taskinput = document.querySelector('#task-input');
 const tasklist = document.querySelector('#task-list');
 const emptytaskmessage = document.querySelector('#empty-task-message');
 
+function updateemptytaskmessage() {
+    const hastasks = tasklist.querySelector('.task-item') !== null;
+
+    if (hastasks) {
+        emptytaskmessage.remove();
+    } else if (emptytaskmessage.parentElement !== tasklist) {
+        tasklist.appendChild(emptytaskmessage);
+    }
+}
+
 taskform.addEventListener('submit', (event) => {
     event.preventDefault();
 
@@ -28,12 +38,22 @@ taskform.addEventListener('submit', (event) => {
         taskitem.classList.toggle('completed', checkbox.checked);
     });
 
+    const deletebutton = document.createElement('button');
+    deletebutton.className = 'delete-task-button';
+    deletebutton.type = 'button';
+    deletebutton.textContent = 'Delete';
+    deletebutton.setAttribute('aria-label', `Delete task: ${taskname}`);
+
+    deletebutton.addEventListener('click', () => {
+        taskitem.remove();
+        updateemptytaskmessage();
+    });
+
     tasklabel.append(checkbox, tasktext);
     taskitem.appendChild(tasklabel);
+    taskitem.appendChild(deletebutton);
     tasklist.appendChild(taskitem);
-    if (emptytaskmessage.parentElement === tasklist) {
-        emptytaskmessage.remove();
-    }
+    updateemptytaskmessage();
     taskinput.value = '';
     taskinput.focus();
 });
